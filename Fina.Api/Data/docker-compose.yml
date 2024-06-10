@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=docker;Database=fina;Username=postgres;Password=root"
+  db:
+    image: my-postgres
+    environment:
+      POSTGRES_DB: fina
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
