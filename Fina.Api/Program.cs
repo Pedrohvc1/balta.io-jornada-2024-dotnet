@@ -1,4 +1,6 @@
 using Fina.Api.Data;
+using Fina.Api.Handlers;
+using Fina.Core.Handlers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,9 @@ var connectionString = new ConfigurationBuilder()
     .Build();
 
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => opt.UseNpgsql(connectionString.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
+builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
 
 
 var app = builder.Build();

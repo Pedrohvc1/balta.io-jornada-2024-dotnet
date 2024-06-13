@@ -17,8 +17,8 @@ public class UpdateTransactionRequest : Request
     public decimal Amount { get; set; }
 
     [Required(ErrorMessage = "Categoria inválida")]
-    public long Category { get; set; }
+    public long CategoryId { get; set; }
 
     [Required(ErrorMessage = "Data inválida")]
-    public DateTime? PairOrReceivedAt { get; set; }
+    public DateTime? PaidOrReceivedAt { get; set; }
 }
