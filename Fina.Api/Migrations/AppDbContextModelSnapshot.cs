@@ -32,17 +32,17 @@ namespace Fina.Api.Migrations
 
                     b.Property<string>("Description")
                         .HasMaxLength(255)
-                        .HasColumnType("NVARCHAR");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(80)
-                        .HasColumnType("NVARCHAR");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasMaxLength(160)
-                        .HasColumnType("NVARCHAR");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -64,16 +64,16 @@ namespace Fina.Api.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("DATETIME");
+                        .HasColumnType("TIMESTAMP");
 
                     b.Property<DateTime?>("PaidOrReceivedAt")
                         .IsRequired()
-                        .HasColumnType("DATETIME");
+                        .HasColumnType("TIMESTAMP");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(80)
-                        .HasColumnType("NVARCHAR");
+                        .HasColumnType("TEXT");
 
                     b.Property<short>("Type")
                         .HasColumnType("SMALLINT");
@@ -81,7 +81,7 @@ namespace Fina.Api.Migrations
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasMaxLength(160)
-                        .HasColumnType("NVARCHAR");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 

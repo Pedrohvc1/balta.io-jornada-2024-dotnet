@@ -18,9 +18,9 @@ namespace Fina.Api.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Title = table.Column<string>(type: "NVARCHAR", maxLength: 80, nullable: false),
-                    Description = table.Column<string>(type: "NVARCHAR", maxLength: 255, nullable: true),
-                    UserId = table.Column<string>(type: "NVARCHAR", maxLength: 160, nullable: false)
+                    Title = table.Column<string>(type: "TEXT", maxLength: 80, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 255, nullable: true),
+                    UserId = table.Column<string>(type: "TEXT", maxLength: 160, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,13 +33,13 @@ namespace Fina.Api.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Title = table.Column<string>(type: "NVARCHAR", maxLength: 80, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    PaidOrReceivedAt = table.Column<DateTime>(type: "DATETIME", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 80, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TIMESTAMP", nullable: false),
+                    PaidOrReceivedAt = table.Column<DateTime>(type: "TIMESTAMP", nullable: false),
                     Type = table.Column<short>(type: "SMALLINT", nullable: false),
                     Amount = table.Column<decimal>(type: "numeric(10,2)", nullable: false),
                     CategoryId = table.Column<long>(type: "bigint", nullable: false),
-                    UserId = table.Column<string>(type: "NVARCHAR", maxLength: 160, nullable: false)
+                    UserId = table.Column<string>(type: "TEXT", maxLength: 160, nullable: false)
                 },
                 constraints: table =>
                 {

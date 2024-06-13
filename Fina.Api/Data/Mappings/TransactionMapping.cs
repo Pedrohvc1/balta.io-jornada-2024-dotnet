@@ -14,7 +14,7 @@ public class TransactionMapping : IEntityTypeConfiguration<Transaction>
 
         builder.Property(x => x.Title)
             .IsRequired(true)
-            .HasColumnType("NVARCHAR")
+            .HasColumnType("TEXT")
             .HasMaxLength(80);
 
         builder.Property(x => x.Type)
@@ -27,15 +27,15 @@ public class TransactionMapping : IEntityTypeConfiguration<Transaction>
 
         builder.Property(x => x.CreatedAt)
             .IsRequired(true)
-            .HasColumnType("DATETIME");
+            .HasColumnType("TIMESTAMP");
 
         builder.Property(x => x.PaidOrReceivedAt)
             .IsRequired(true)
-            .HasColumnType("DATETIME");
+            .HasColumnType("TIMESTAMP");
         
         builder.Property(x => x.UserId)
             .IsRequired(true)
-            .HasColumnType("NVARCHAR")
+            .HasColumnType("TEXT")
             .HasMaxLength(160);
     }
 }

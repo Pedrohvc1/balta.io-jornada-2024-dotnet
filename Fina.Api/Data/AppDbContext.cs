@@ -1,3 +1,4 @@
+using System.Reflection;
 using Fina.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,10 +7,7 @@ namespace Fina.Api.Data;
 public class AppDbContext : DbContext
 {
 
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-
-    }
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
     public DbSet<Category> Categories { get; set; } = null!; // eles não podem ser null, então eu coloco o null! (null not) para dizer que não é null
     public DbSet<Transaction> Transactions { get; set; } = null!;
@@ -19,6 +17,7 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // ApplyConfigurationsFromAssembly é um método que procura por todas as classes que implementam a interface IEntityTypeConfiguration e aplica o mapeamento
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
+
 }

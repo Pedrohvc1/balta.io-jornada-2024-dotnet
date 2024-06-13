@@ -14,17 +14,17 @@ public class CategoryMapping : IEntityTypeConfiguration<Category> // adiciona a 
 
         builder.Property(x => x.Title) // Property adiciona a propriedades da entidade
             .IsRequired(true) // not null
-            .HasColumnType("NVARCHAR")
+            .HasColumnType("TEXT")
             .HasMaxLength(80);
 
         builder.Property(x => x.Description)
             .IsRequired(false)
-            .HasColumnType("NVARCHAR")
+            .HasColumnType("TEXT")
             .HasMaxLength(255);
 
         builder.Property(x => x.UserId)
             .IsRequired(true)
-            .HasColumnType("NVARCHAR")
+            .HasColumnType("TEXT")
             .HasMaxLength(160);
     }
 }

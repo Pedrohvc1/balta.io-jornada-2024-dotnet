@@ -3,10 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Obtenha a string de conexão da variável de ambiente
-string connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
-builder.Services.AddDbContext<AppDbContext>(opt => opt.UseNpgsql(connectionString));
+//Read Configuration from appSettings
+var connectionString = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json")
+    .Build();
+
+builder.Services.AddEntityFrameworkNpgsql().AddDbContext<AppDbContext>(opt => opt.UseNpgsql(connectionString.GetConnectionString("DefaultConnection")));
 
 
 var app = builder.Build();
