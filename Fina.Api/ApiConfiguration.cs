@@ -4,4 +4,5 @@ namespace Fina.Api;
 public static class ApiConfiguration
 {
     public const string UserId = "pedro@teste.com";
+    public static string CorsPolicyName = "wasm"; // nome da politica de CORS
 }
