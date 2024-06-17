@@ -13,7 +13,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
     {
         var category = new Category
         {
-            UserId = request.UserId,
+            UserId = request.UserId is "" ? ApiConfiguration.UserId : request.UserId,
             Title = request.Title,
             Description = request.Description
         };
@@ -86,9 +86,9 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
         try
         {
             var query = context.Categories
-        .AsNoTracking()
-        .Where(x => x.UserId == request.UserId)
-        .OrderBy(x => x.Title);
+            .AsNoTracking()
+            .Where(x => x.UserId == request.UserId)
+            .OrderBy(x => x.Title);
 
             var categories = await query
             .Skip((request.PageNumber - 1) * request.PageSize)

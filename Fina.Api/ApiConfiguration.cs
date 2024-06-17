@@ -3,6 +3,6 @@ namespace Fina.Api;
 //  TODO: Classe criada para armazenar as configurações da API
 public static class ApiConfiguration
 {
-    public const string UserId = "pedro@teste.com";
-    public static string CorsPolicyName = "wasm"; // nome da politica de CORS
+    public const string UserId = "estudos_dotnet";
+    public static string CorsPolicyName = "politica_CORS"; // nome da politica de CORS
 }

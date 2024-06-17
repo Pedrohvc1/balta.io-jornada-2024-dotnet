@@ -10,6 +10,7 @@ public static class BuildExtension
 {
     public static void AddConfiguration(this WebApplicationBuilder builder)
     {
+        Configuration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
         Configuration.BackendUrl = builder.Configuration.GetValue<string>("BackendUrl") ?? string.Empty;
         Configuration.FrontendUrl = builder.Configuration.GetValue<string>("FrontendUrl") ?? string.Empty;
     }
@@ -22,17 +23,14 @@ public static class BuildExtension
 
     public static void AddDataContexts(this WebApplicationBuilder builder)
     {
-        var connectionString = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .Build();
-
+        
         builder
             .Services
             .AddEntityFrameworkNpgsql()
             .AddDbContext<AppDbContext>(
                 opt =>
                 {
-                    opt.UseNpgsql(connectionString.GetConnectionString("DefaultConnection"));
+                    opt.UseNpgsql(Configuration.ConnectionString);
                 });
     }
 
